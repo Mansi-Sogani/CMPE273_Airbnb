@@ -1,0 +1,337 @@
+<html>
+<head>
+<title>Vacation Rentals</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  
+<script type="text/javascript"	src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript"	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css"	href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src="angularjs/dashboardController.js"></script>
+
+<script type="text/javascript"	src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css"	href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<link rel="shortcut icon" sizes="76x76" type="image/x-icon"	href="https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+<link rel="icon" sizes="192x192"href="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script	src="http://m-e-conroy.github.io/angular-dialog-service/javascripts/dialogs.min.js" type="text/javascript"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+input[type=text]:focus {
+	outline: none;
+	box-shadow: 0px 1px 0px 0px #008489;
+}
+
+select:focus {
+	outline: none;
+	box-shadow: 0px 1px 0px 0px #008489;
+}
+
+.icon-facebook:before {
+	content: '\f16e';
+}
+
+.icon:before {
+	line-height: 1;
+}
+
+.icon:before {
+	font-family: Airglyphs, sans-serif;
+}
+
+a:focus {
+	outline: none
+}
+
+button:focus {
+	outline: none
+}
+
+*:focus {
+    outline: 0 !important;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus
+	{
+	color: black;
+	background-color: white;
+	font-weight: 800;
+}
+</style>
+
+</head>
+
+<body ng-app="airbnb" ng-controller="dashboardController">
+	<div style="z-index: 99; display: block;">
+		<nav class="navbar navbar-default "
+			style="background-color: transparent; background: transparent; border-color: transparent;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/home"
+						style="border-right: 1px solid #dce0e0;"> <img
+						src="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png"
+						alt="some_text"
+						style="height: 30px; font-weight: normal; font-size: inherit; background-color: transparent; color: inherit; top: -2px; font-family:"HelveticaNeue";font-size: 14px;    padding: 4px 12px;     ">
+					</a>
+
+				</div>
+				<ul class="nav navbar-nav pull-right" style="font-family: Circular,"HelveticaNeue",Helvetica; top: -2px;font-size: 14px;padding: 4px 12px;"-webkit-font-smoothing:antialiased;">
+					
+					<li><a href="/getAdminDashboard"> <img width="28" height="28" class="img-circle" ng-src="{{imageUrl}}" style="border-color: #c4c4c4; border: 2px solid #c4c4c4;">
+					</a></li>
+					<li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="tabbable">
+				<ul class="nav nav-pills nav-stacked col-md-3">
+					<li class="active"><a href="#a" data-toggle="tab">View Property</a></li>
+					<li><a href="#d" data-toggle="tab">Reviews</a></li>
+				</ul>
+				<div class="tab-content col-md-9">
+					<div class="tab-pane active" id="a">
+						<div class="panel panel-default">
+							<div class="panel-heading" align="middle" style="font-size: auto" ng-model="product_name_model">
+								<strong><h3>Property</h3></strong>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Owner</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><span><%=property[0].fname%> <%=property[0].lname%></span> </span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Title</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><span><%=property[0].title%></span> </span>
+									</div>
+								</div>
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Description</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><%=property[0].desc%></span>
+									</div>
+								</div>
+
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Category</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><%=property[0].category%></span>
+									</div>
+								</div>
+								
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">No of Guests</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><%=property[0].guests%></span>
+									</div>
+								</div>
+								
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Number of Rooms</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><%=property[0].rooms%></span>
+									</div>
+								</div>
+								
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Price</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><%=property[0].price%></span>
+									</div>
+								</div>
+								
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Biddable</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><%=property[0].IsBiddable=0 ? 'Yes' : 'No' %></span>
+									</div>
+								</div>
+
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Address</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;">
+											<%=property[0].street%>, <%=property[0].apt%>, <%=property[0].city%>,
+											<%=property[0].state%>, <%=property[0].zip%> </span>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-footer"></div>
+						</div>
+					</div>
+					<div class="tab-pane" id="c">
+						<div class="panel panel-default">
+							<div class="panel-heading" align="middle" style="font-size: auto"
+								ng-model="product_name_model">
+								<strong><h3>Update Photo</h3></strong>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-3">
+										<img
+											ng-src="{{imageUrl}}"
+											style="border-color: #c4c4c4; border: 2px solid #c4c4c4; width: 100%">
+									</div>
+									<div class="col-md-8">
+										<div class="row">Clear frontal face photos are an
+											important way for hosts and guests to learn about each other.
+											It’s not much fun to host a landscape! Please upload a photo
+											that clearly shows your face.</div>
+										<div class="row" style="padding: 30px">
+											<input name="photo" onchange="angular.element(this).scope().uploadFile(this.files)"
+												type="file">
+										</div>
+										<div class="row" style="padding: 30px">
+											<div class="col-md-5">
+												<button ng-click="updatePhoto();"
+													class="btn icon-btn btn-block  btn-small"
+													style="position: relative; padding-top: 10px !important; padding-bottom: 10px !important; border-color: #ff5a5f; background-color: #ff5a5f; color: #fff; padding-left: 25px !important; padding-right: 25px !important; font-weight: normal;"
+													type="reset">
+													<span class="text-container" style=""> Update Photo
+													</span>
+												</button>
+											</div>
+										</div>
+										<div class="row"  ng-hide="uploadSucess" >
+											<div class="col-md-8" >
+											<span style="color:green">
+												Image uploaded successfully
+												</span>
+											</div>
+										</div>
+										<div class="row"  ng-hide="uploadFail" style="text-color:red">
+											<div class="col-md-8">
+											<span style="color:red">
+												Image upload failed. Try again.
+												</span>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="panel-footer"></div>
+						</div>
+					</div>
+					<div class="tab-pane" id="d">
+						<div class="panel panel-default">
+							<div class="panel-heading" align="middle" style="font-size: auto"
+								ng-model="product_name_model">
+								<strong><h3>Reviews</h3></strong>
+							</div>
+							<div class="panel-body"></div>
+
+							<div class="panel-footer"></div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</body>
+</html>

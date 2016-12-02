@@ -1,0 +1,256 @@
+<html>
+
+	<head>
+		<title>hostrequests</title>
+		
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+			
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+			<link rel='stylesheet' href='/stylesheets/hr.css' />
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+			<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>	
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>			
+		
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+		<link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+		<link rel="icon" sizes="192x192" href="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<script src="angularjs/host.js"></script>		
+	</head>
+	<style>
+	.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+}
+</style>
+	<body ng-app="hostapp" ng-controller="hostcontroller">
+	
+		<div>
+				<nav class="navbar navbar-default "
+			style="background-color: transparent; background: transparent; border-color: transparent;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/home"
+						style="border-right: 1px solid #dce0e0;"> <img
+						src="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png"
+						alt="some_text"
+						style="height: 30px; font-weight: normal; font-size: inherit; background-color: transparent; color: inherit; top: -2px; font-family:"HelveticaNeue";font-size: 14px;    padding: 4px 12px;     ">
+					</a>
+
+				</div>
+				<ul class="nav navbar-nav pull-right" style="z-index: 100000;"
+					style="overflow: hidden; font-family: Circular,"HelveticaNeue",Helvetica; top: -2px;font-size: 14px;padding: 4px 12px;"-webkit-font-smoothing:antialiased;">
+					
+					<li ng-if="profile.status  === 0"><a href="" ng-click="becomeHost()">Become a Host</a></li>
+					<li ng-if="profile.status  === 1" ><a href="" ><span style="color:red">Become a Host (Pending)</span></a>
+					<li ng-if="profile.status  === 2"><a href="/hostlistings">Host</a>
+					<li><a href="/trips">Trips</a>
+					<li class="dropdown"><a href="/profile"> <img width="28"
+							height="28" class="img-circle dropbtn" ng-src="{{imageUrl}}"
+							style="border-color: #c4c4c4; border: 2px solid #c4c4c4;">
+					</a>
+
+						<div class="dropdown-content">
+							<label> <a href="/logout">Logout</a>
+							</label>
+						</div></li>
+
+				</ul>
+
+			</div>
+		</nav>
+			</nav>
+		</div>  
+		
+		
+		
+		<div>		
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li><a href="/hostintrovideo">Intro Video</a></li>
+						<li><a href="#">Dashboard</a></li>
+						<li><a href="/inbox">Inbox</a></li>
+						<li class="active"><a href="/hostlistings">Your listings</a></li>
+						<li><a href="#">Your Trips</a></li>
+						<li><a href="#">Host Assist</a></li>
+						<li><a href="/hostaccount">Account</a></li>
+						<li><a href="#">Profile</a></li>
+						<li><a href="#">Invite Friends</a></li>
+					</ul>
+
+				</div>
+			</nav>
+ 		</div>
+		
+		
+		<div class="row"> <!--mainrow-->
+			<div class="col-sm-2"></div> 
+			<div class="col-sm-8">  <!--inside column-->
+			
+				<div class="col-sm-3">
+				<p><br><br></p>
+				<a href="/hostlistings"><font size="4" color="DimGrey">Listings</font></a>
+				<br><br>
+				<a href="/hostrequests"><font size="4" color="DimGrey">Reservation Requests</font></a>
+				<br><br>
+				<a href="/hostreservations"><font size="4" color="DimGrey">Upcoming Reservations</font></a>
+				<br><br>
+				<a href="/completedreservations"><font size="4" color="DimGrey">Completed Reservations</font></a>
+				<br><br>
+				<p><button  class="btn btn-primary" style="display: block;width:100%;font-size:auto" ng-click="createnewlisting()" ng-model="newlistingpage"><strong>Add New Listings</strong></button></p>
+				</div>
+								
+				
+				<div class="col-sm-9">
+							
+						<div ng-show="yesrequests">
+						<div class="row" ng-repeat="requests in requestss">
+						<div class="panel panel-default" >
+							<div class="panel-heading" align="middle" style="font-size:auto" ng-model="product_name_model">
+								<strong><h3>{{requests.title}}</h3></strong>
+							</div>
+							
+							<div class="panel-body" style="height:175px">
+								<div class="col-sm-3">
+								<!--img src="images/home.jpg" alt="W3Schools.com" style="width:100%;height:100%;float:left" align="top"-->
+								<img src="http://localhost:3001/getpicture0/?prop_id={{requests.prop_id}}" alt="No image found :(" style="width:100%;height:100%;float:left" align="top">
+								</div>
+								
+								<div class="col-sm-9">
+								<br>
+								<div class="col-sm-12" align="left" ><strong>{{requests.desc}}</strong></div>
+								<br>
+								<div class="col-sm-12" align="left" ><strong>Location: </strong>{{requests.city}}, {{requests.state}}</div>
+								<br><br><br>
+
+								
+								<div>
+								<div class="col-sm-3"  ><strong>Request sent by: </strong></div>
+								<div class="col-sm-3"  ><strong>Check-in: </strong></div>
+								<div class="col-sm-3"  ><strong>Check-out</strong></div>
+								<div class="col-sm-3"  ><strong>No. of guests</strong></div>
+							
+								<div class="col-sm-3"  >{{requests.email}}</div>
+								<div class="col-sm-3"  >{{requests.check_in | date:"dd-MM-yyyy"}}</div>
+								<div class="col-sm-3"  >{{requests.check_out | date:"dd-MM-yyyy"}}</div>
+								<div class="col-sm-3"  >{{requests.guests}}</div>
+								</div>
+							
+								</div>
+							</div>	
+							
+							<div class="panel-footer">
+								<div class="row">
+								<div class="col-sm-6" align="left">
+								<button type="button" class="btn btn-info" style="display: block;width:50%;font-size:auto" ng-click="seereview(requests)">See User Reviews</button>
+								</div>
+								<div class="col-sm-6" align="right">
+								<div class="btn-group">
+									<button type="button" class="btn btn-success" style="display: block;width:50%;font-size:auto" ng-click="acceptuser(requests)">Accept</button>
+									<button type="button" class="btn btn-danger" style="display: block;width:50%;font-size:auto" ng-click="declineuser(requests)">Decline</button>
+								</div>
+								</div>
+								</div>
+								
+								
+							<div class="row" ng-show="userreviews">
+							<br>
+							<div class="col-sm-1" ></div>	
+							<div class="col-sm-10" >
+							<!--User reviews will be displayed here-->
+							<table class="table table-bordered table-striped">
+								<thead>
+									<tr class>
+										
+									<th>Reviews</th>
+									<th width="12%">Ratings</th>	
+									</tr>
+								</thead>
+								
+								<tbody>
+									<tr  ng-repeat="review in reviews">
+									<td>{{review.review}}
+									</td>
+									<td>{{review.rating}}
+									</td>
+									</tr>
+								</tbody>
+							</table>
+							</div>
+							
+							<div class="col-sm-1" ></div>
+							</div>								
+								
+								
+								
+								
+							</div>									
+						</div>
+						</div>	
+						</div>
+
+
+
+
+				<div class="row" ng-show="norequests" align="middle"> 
+					<div><br><br><br></div>
+					<p><font size="5" color="DimGrey"><b>You don’t have any reservation requests at the moment ! Hang in tight !</b></font></p>
+				</div>
+
+
+
+						
+						
+				</div>				
+				
+				
+		
+			</div>	<!--inside column-->
+			<div class="col-sm-2"></div> 
+		</div> <!--main row-->
+	</body>
+
+	
+</html>

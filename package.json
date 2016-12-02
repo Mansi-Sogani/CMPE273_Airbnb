@@ -1,0 +1,27 @@
+{
+  "name": "Ebay",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.2.6",
+    "ejs": "*",
+    "mysql" :"*",
+    "client-sessions":"*",
+    "simple-node-logger":"*",
+    "crypto" : "*",
+    "mocha":"*",
+    "request":"*",
+    "express-session":"*",
+    "connect-mongo" :"*",
+    "mongod":"*",
+    "mongodb":"*",
+    "fs":"*",
+    "node-uuid":"*",
+    "ng-input-match":"*",
+    "winston" : "*",
+    "form-data" :"*"
+  }
+}

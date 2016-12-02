@@ -1,0 +1,476 @@
+<html>
+
+	<head>
+		<title>addnewlisting</title>
+		
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+			
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+			<link rel='stylesheet' href='/stylesheets/hr.css' />
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+			<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+			
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>				
+			
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+		<link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+		<link rel="icon" sizes="192x192" href="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<script src="angularjs/host.js"></script>
+		
+		<!--script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXlm3qIBZRDRWEkMOfmv9e71WLMQkStak&callback=initMap"-->
+
+    </script>
+	
+	    <script>
+
+      function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          //center: {lat: -33.8688, lng: 151.2195},
+		  center: {lat: 37.335200, lng:  -121.881071},
+          zoom: 10,
+          mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+       var input = document.getElementById('pac-input');
+		
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+			  
+            }));
+			latitude = place.geometry.location.lat();
+			longitude = place.geometry.location.lng();
+			console.log("position is " + place.geometry.location);
+			console.log("lat is " + latitude);
+			console.log("long is " + longitude);
+			document.getElementById("lat").value = latitude;
+			document.getElementById("long").value = longitude;
+			
+			
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+
+    </script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHKtRtK7nON5Rena22IcO7CCK571PK3sc&libraries=places&callback=initAutocomplete"></script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 345px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+      #target {
+        width: 345px;
+      }
+      
+      .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+}
+    </style>	
+	
+	
+	
+	</head>
+	
+	<body ng-app="hostapp" ng-controller="hostcontroller">
+	
+		<div>
+			<nav class="navbar navbar-default "
+			style="background-color: transparent; background: transparent; border-color: transparent;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/home"
+						style="border-right: 1px solid #dce0e0;"> <img
+						src="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png"
+						alt="some_text"
+						style="height: 30px; font-weight: normal; font-size: inherit; background-color: transparent; color: inherit; top: -2px; font-family:"HelveticaNeue";font-size: 14px;    padding: 4px 12px;     ">
+					</a>
+
+				</div>
+				<ul class="nav navbar-nav pull-right" style="z-index: 100000;"
+					style="overflow: hidden; font-family: Circular,"HelveticaNeue",Helvetica; top: -2px;font-size: 14px;padding: 4px 12px;"-webkit-font-smoothing:antialiased;">
+					
+					<li ng-if="profile.status  === 0"><a href="" ng-click="becomeHost()">Become a Host</a></li>
+					<li ng-if="profile.status  === 1" ><a href="" ><span style="color:red">Become a Host (Pending)</span></a>
+					<li ng-if="profile.status  === 2"><a href="/hostlistings">Host</a>
+					<li><a href="/trips">Trips</a>
+					<li class="dropdown"><a href="/profile"> <img width="28"
+							height="28" class="img-circle dropbtn" ng-src="{{imageUrl}}"
+							style="border-color: #c4c4c4; border: 2px solid #c4c4c4;">
+					</a>
+
+						<div class="dropdown-content">
+							<label> <a href="/logout">Logout</a>
+							</label>
+						</div></li>
+
+				</ul>
+
+			</div>
+		</nav>
+		</div>  
+		
+		<div class="row"> <!--CHUMMA-->\
+		<br><br>
+		</div>
+		
+		
+		<div class="row"> <!--mainrow-->
+			<div class="col-sm-4"></div> 
+			<div class="col-sm-4">  <!--inside column-->
+				
+
+
+					<!--div class="panel panel-default">
+				
+					<div class="panel-heading">
+					asfa
+					</div>
+					
+					<div class="panel-body" >
+					<div class="tab-content"-->
+					
+					
+						<div ng-show="defaultpage">
+						<h2>Hi, <%= username %>! Let’s get you ready to become a host.</h2>
+						<br><br>
+						
+						
+					
+						<form class="form-horizontal" role="form">
+							<h4><b>Add a new listing</b></h4>
+							<div class="form-group">
+								<div class="col-sm-6">
+									<input type="text" class="form-control"  placeholder="Title &#42;" ng-model="title_model" style="font-size:auto;" >
+								</div>
+								
+								<div class="col-sm-3">							
+									<div class="dropdown">
+									<button class="btn btn-ordinary dropdown-toggle" type="button" data-toggle="dropdown" ng-model="category_model" style="width:100%;float:left;">Select Category<span class="caret"></span></button>
+									<ul class="dropdown-menu">
+									<li><a ng-click='category_value("Entire Home")' href="">Entire Home</a></li>
+									<li><a ng-click='category_value("Private Room")' href="">Private Room</a></li>
+									<li><a ng-click='category_value("Shared Room")' href="">Shared Room</a></li>
+									</ul>									
+									</div>
+								</div>
+								
+								<div class="col-sm-3">
+								<input type="text" class="form-control" placeholder="Category &#42;" ng-model="category_model" style="font-size:auto;" >
+								</div>								
+							</div>
+							
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input type="text" class="form-control"  placeholder="Description &#42;" ng-model="desc_model" style="font-size:auto;" >
+								</div>
+							</div>
+							
+							<div class="form-group">
+							
+								
+								
+								<div class="col-sm-4">
+									<input type="number" min="1"  class="form-control"  placeholder="Number of guests &#42;" ng-model="guests_model" style="font-size:auto;" >
+								</div>
+								
+								<div class="col-sm-4">
+									<input type="number" min="1"  class="form-control"  placeholder="Number of rooms &#42;" ng-model="rooms_model" style="font-size:auto;" >
+								</div>			
+
+								<div class="col-sm-4">
+									<input type="number" min="1"  class="form-control" placeholder="Number of beds &#42;" ng-model="beds_model" style="font-size:auto;" >
+								</div>									
+							</div>
+							
+							
+							<h4><b>Address</b></h4>						
+							<div class="form-group">
+								<div class="col-sm-6">
+									<input type="text" id="street" class="form-control"  placeholder="Street &#42;" ng-model="street_model" style="font-size:auto;" >
+								</div>
+								
+								<div class="col-sm-6">
+									<input type="text" id="apt" class="form-control"  placeholder="Apt &#42;" ng-model="apt_model" style="font-size:auto;" >
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-sm-4">
+									<input type="text" id="city" class="form-control"  placeholder="City &#42;" ng-model="city_model" style="font-size:auto;" >
+								</div>
+								
+								<div class="col-sm-4">
+									<input type="text" id="state" class="form-control"  placeholder="State &#42;" ng-model="state_model" style="font-size:auto;" >
+								</div>
+								
+								<div class="col-sm-4">
+									<input type="text" id="zip" class="form-control"  placeholder="Zipcode &#42;" ng-model="zip_model" style="font-size:auto;" >
+								</div>                  
+							</div>
+							
+
+														
+							
+							<h4><b>Maps</b></h4>
+							<div class="form-group"> 
+								<div class="col-sm-12">
+								<button  class="btn btn-default" style="display: block; width: 100%;font-size:auto" ng-click="findinmap();"><strong>Locate</strong></button>
+								<br>
+								</div>
+								
+								
+								<input id="pac-input" class="controls" type="text"  placeholder="Search Box" ng-model="search_model" >
+								<div  id="map" style="width:100%;height:500px"></div>
+								<!--div class="col-sm-12">
+								<button  class="btn btn-primary" style="display: block; width: 100%;font-size:auto" ng-click="latlong();"><strong>latlong</strong></button>
+								</div-->
+							</div>
+
+							 
+							<h4><b>Availability </b></h4>
+							<div class="form-group">
+								<div class="col-sm-6">
+									<input placeholder="Available From &#42;" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" min="2016-11-28" ng-model="from_date_model" style="font-size:auto;" >
+								</div>
+								
+								<div class="col-sm-6">
+									<input placeholder="Available Till &#42;" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" min="2016-11-29" ng-model="to_date_model" style="font-size:auto;" >
+								</div>
+							</div>
+							
+
+							
+							<Pricing>
+							<div class="form-group">
+								<div class="col-sm-4">
+									<input type="number" min="1"  class="form-control"  placeholder="Base price per night &#42;" ng-model="price_model" style="font-size:auto;" >
+								</div>
+								
+								<div class="col-sm-4">
+									<input type="number" min="1"  class="form-control"  placeholder="Base price per week &#42;" ng-model="week_price" style="font-size:auto;" >
+								</div>
+								
+								<div class="col-sm-4">
+									<input type="number" min="1"  class="form-control"  placeholder="Base price per month &#42;" ng-model="month_price" style="font-size:auto;" >
+								</div>
+								
+								<div><br><br></div>
+								<div class="col-sm-2" ></div>
+								<div class="col-sm-4" >
+									<label><input type="radio"  value=0 ng-model="isbiddable_model" reqired>Price is fixed</label>
+								</div>
+								
+								<div class="col-sm-4" >
+									<label><input type="radio" value=1 ng-model="isbiddable_model" reqired>Price is variable</label>
+								</div>	
+								<div class="col-sm-2" ></div>
+								<div><br><br></div>
+							</div>
+							
+								
+								
+						
+							
+							<h4><b>Add photos&#42; (15 pictures limit)</b></h4>
+							<div class="form-group" >
+								<div class="col-sm-12" align="middle">
+								<input type="file" accept="image/*" onchange="angular.element(this).scope().uploadImageFile(this.files)" multiple>
+								<br>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-12"  ng-show="incomplete_listing"> 
+									<div class="alert alert-danger"  style="width: auto;font-size:auto;">
+									Enter all the required(&#42;) fields and try again !
+									</div>
+								</div>
+							
+							
+							
+								<div class="col-md-12"  ng-show="pictureno_limit"> 
+									<div class="alert alert-danger"  style="width: auto;font-size:auto;">
+									Maximum number of images that can be uploaded is 15 ! Reselect and try again !
+									</div>
+								</div>
+							
+							
+							
+								<div class="col-md-12"  ng-show="invalid_entry"> 
+									<div class="alert alert-danger"  style="width: auto;font-size:auto;">
+									Invalid entry! Please recheck the entered category & dates!
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group" >
+								<div class="col-sm-6" align="right">
+									<button  class="btn btn-primary" style="display: block; width: 25%;font-size:auto" ng-click="publishlisting();"><strong>Publish</strong></button>
+									<!--button  class="btn btn-primary" style="display: block; width: 25%;font-size:auto" ng-click="upload_images();"><strong>Publish</strong></button-->	
+								</div>
+								<div class="col-sm-6">
+									<button  class="btn btn-danger" style="display: block; width: 25%;font-size:auto" ng-click="cancellisting();"><strong>Cancel</strong></button>
+								</div>
+							</div>
+						
+						</form>
+						</div>
+						
+						<div ng-show="listing_created">
+						<div class="form-group">
+								<div class="col-md-12"  align="middle"> 
+									<br><br><br><br><br><br><br><br><br><br><br><br>
+									<h2>Listing succesfully created! </h2>
+									<button  class="btn btn-primary" style="display: block; width: 25%;font-size:auto" ng-click="cancellisting();"><strong>View Listing</strong></button>									
+								</div>
+							</div>
+						</div>
+
+					
+					<!--/div> 			
+					</div> 
+				</div--> 
+				
+				
+				
+				
+			</div>	<!--inside column-->
+			
+			
+			<div class="col-sm-4"></div> 
+		</div> <!--main row-->
+		
+	
+	<div ng-show="justhidethis">
+		<input type="text" id="lat" class="form-control"  placeholder="State &#42;" ng-model="lat_model" style="font-size:auto;">
+		<input type="text" id="long" class="form-control"  placeholder="State &#42;" ng-model="long_model" style="font-size:auto;">
+	</div>
+	
+	</body>
+
+	
+</html>

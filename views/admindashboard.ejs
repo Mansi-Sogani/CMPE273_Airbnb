@@ -1,0 +1,175 @@
+<html>
+<p> testing </p>
+<head>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+			
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+			<link rel='stylesheet' href='/stylesheets/hr.css' />
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+			<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+</head>
+
+
+
+<body ng-app="adminDashboard" ng-controller="adminDashboardController">
+<div class="row"> 	
+			<div class="col-sm-1"></div>
+			<div class="col-sm-5" align="middle"> 		
+				<div class="row"> 
+				    <h4><Strong>Revenue Generated from each property</strong></h4>
+                   <div ng-init="loadPropertyRevenues();" id="donutchart"></div>
+                 </div>
+             </div>
+             <div class="col-sm-5" align="middle">
+              <div class="row">
+                     <h4><Strong>Revenue Generated from each City</strong></h4>
+                   <div ng-init="loadCityRevenues();" id="citychart" style:"height:500px; width:600px;"></div>
+               </div>
+             </div>         
+</div>
+</body>
+<script>
+   var app=angular.module('adminDashboard',[]);
+   app.controller('adminDashboardController',function($scope,$http)
+    {
+      console.log("here");
+      $scope.loadPropertyRevenues=function(){
+          $http({
+              method:'get',
+              url:'/getPropertyRevenue'
+               }).success(function(data){
+                  console.log("reached to revenue ");
+                  console.log(data);
+                  console.log(data[0].prop_id);
+                  console.log(data[0].totalRevenue);
+                  drawRevenueChart(data);
+                   
+                 })
+        }
+       $scope.loadCityRevenues=function(){
+         $http({
+                 method:'get',
+                 url:'/getCityRevenue'
+              }).success(function(data){
+                 console.log(data);
+                 drawCityRevenueCharts(data);
+                })
+       
+       
+       
+       } 
+       
+    })    
+
+     google.load("visualization", "1.1", {
+        		packages : [ "corechart" ]
+        	});  	  
+        	google.setOnLoadCallback(drawRevenueChart);
+          	function drawRevenueChart(data) {
+        		var chartData = prepareRevenueChartData(data);	
+        		var data = new google.visualization.DataTable();
+        		data.addColumn('string', 'propertyId');
+        		data.addColumn('number', 'TotalRevenueGenerated');
+        		data.addRows(chartData);
+        		
+        		var options = {
+        			chart : {
+        				title : 'PropertyId',
+        				subtitle : 'Total Revenue Generated',
+        			},
+        			height: 500,
+        			pieHole: 0.4
+        		};
+
+        		var chart = new google.visualization.PieChart(document
+        				   .getElementById('donutchart'));
+
+        		chart.draw(data, options);
+        	}
+           function prepareRevenueChartData(data){
+              
+                var chartdata=[];
+                var str=[];
+                for(var i=0;i<data.length;i++)
+                {
+                  str[i]=(data[i].prop_id)+'';
+                 }
+                
+                 for(var i=0;i<data.length;i++)
+                    {
+                     var temp=[
+                                str[i],
+                                data[i].totalRevenue
+                               ];
+                                
+                      chartdata.push(temp);
+                    }
+                   return chartdata; 
+                    
+                 
+              
+              }
+              
+     //for city wise revenues chart
+
+     
+              
+google.load("visualization", "1.1", {
+        		packages : [ "corechart" ]
+        	});  	  
+        	google.setOnLoadCallback(drawCityRevenueCharts);
+          	function drawCityRevenueCharts(data) {
+          	   console.log("0ne");
+        		var chartData = prepareCityChartData(data);	
+        		var data = new google.visualization.DataTable();
+        		data.addColumn('string', 'CityName');
+        		data.addColumn('number', 'TotalRevenueGenerated');
+        		data.addRows(chartData);
+        		
+        		var options = {
+        			chart : {
+        				title : 'cityName',
+        				subtitle : 'Total Revenue Generated',
+        			},
+        			height: 500,
+        			pieHole: 0.3
+        		};
+
+        		var chart = new google.visualization.PieChart(document
+        				   .getElementById('citychart'));
+
+        		chart.draw(data, options);
+        	}
+           function prepareCityChartData(data){
+              console.log("here");
+                var chartdata=[];
+                var str=[];
+                for(var i=0;i<data.length;i++)
+                {
+                  str[i]=(data[i].prop_id)+'';
+                 }
+                
+                 for(var i=0;i<data.length;i++)
+                    {
+                     var temp=[
+                                data[i].city,
+                                data[i].Revenue
+                               ];
+                                
+                      chartdata.push(temp);
+                    }
+                   return chartdata; 
+                    
+                 
+              
+              }
+     
+  
+</script>
+</html>

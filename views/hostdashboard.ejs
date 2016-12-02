@@ -1,0 +1,310 @@
+<html>
+
+	<head>
+		<title>hostintro</title>
+		
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+			
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+			<link rel='stylesheet' href='/stylesheets/hr.css' />
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+			<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+			
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>			
+		
+		
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+		<link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+		<link rel="icon" sizes="192x192" href="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<script src="angularjs/host.js"></script>
+		
+	</head>
+	<style>
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+}
+</style>
+	
+	<!-- changing this currently -->
+	<body >
+	
+		<div>
+				<nav class="navbar navbar-default "
+			style="background-color: transparent; background: transparent; border-color: transparent;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/home"
+						style="border-right: 1px solid #dce0e0;"> <img
+						src="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png"
+						alt="some_text"
+						style="height: 30px; font-weight: normal; font-size: inherit; background-color: transparent; color: inherit; top: -2px; font-family:"HelveticaNeue";font-size: 14px;    padding: 4px 12px;     ">
+					</a>
+
+				</div>
+				<ul class="nav navbar-nav pull-right" style="z-index: 100000;"
+					style="overflow: hidden; font-family: Circular,"HelveticaNeue",Helvetica; top: -2px;font-size: 14px;padding: 4px 12px;"-webkit-font-smoothing:antialiased;">
+					
+					<li ng-if="profile.status  === 0"><a href="" ng-click="becomeHost()">Become a Host</a></li>
+					<li ng-if="profile.status  === 1" ><a href="" ><span style="color:red">Become a Host (Pending)</span></a>
+					<li ng-if="profile.status  === 2"><a href="/hostlistings">Host</a>
+					<li><a href="/trips">Trips</a>
+					<li class="dropdown"><a href="/profile"> <img width="28"
+							height="28" class="img-circle dropbtn" ng-src="{{imageUrl}}"
+							style="border-color: #c4c4c4; border: 2px solid #c4c4c4;">
+					</a>
+
+						<div class="dropdown-content">
+							<label> <a href="/logout">Logout</a>
+							</label>
+						</div></li>
+
+				</ul>
+
+			</div>
+		</nav>
+		</div>  
+		
+		
+		
+		<div>		
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li class="active"><a href="/hostintrovideo">Intro Video</a></li>
+						<li><a href="#">Dashboard</a></li>
+						<li><a href="/inbox">Inbox</a></li>
+						<li><a href="/hostlistings">Your listings</a></li>
+						<li><a href="#">Your Trips</a></li>
+						<li><a href="#">Host Assist</a></li>
+						<li><a href="#">Account</a></li>
+						<li><a href="#">Profile</a></li>
+						<li><a href="#">Invite Friends</a></li>
+					</ul>
+
+				</div>
+			</nav>
+ 		</div>
+		
+		
+		<div class="row" ng-app="dashboard" ng-controller="dashboardController"> 
+			
+			
+			<div class="col-sm-8" align="middle"> 		
+				<div class="row"> 
+						
+						<!--sreekars part-->
+						<div id="columnchart_material"></div>
+						<button type="button" ng-click="loadUserPageClicks();" class="btn btn-primary">Click here to See Page clicks by user</button>     
+    			        <h5>  User Page clicks Graph </h5>
+    			        					
+				</div>
+				
+			</div>
+			<div class="col-sm-4" align="middle">
+			      <div class="row">
+			               <div id="columnchart_material1" style="width: 700px; height: 500px;"></div> 
+			               <button type="button" ng-click="getpropertyData()" class="btn btn-primary">Click here to See Property Clicks</button>
+    			           
+			        </div>
+			 </div>      
+			<div class="col-sm-6" align="middle">
+			  <div class="row">
+			          <button type="button" ng-click="loadUserTracking();" class="btn btn-primary">User Tracking Options</button>
+			   </div> 
+			</div>			   
+		</div>
+		<script>
+        var app=angular.module('dashboard',[]);
+    app.controller('dashboardController',function($scope,$http){
+	console.log("controller");	
+	$scope.loadUserPageClicks=function(){
+		 
+		  $http({
+	            method: 'GET',
+	            url: '/getPageClicksData',
+	          }).success(function(data){
+	        	  console.log("reached back");
+	              drawPageClicksChart(data);
+	              console.log(data);
+	               $scope.testdata=data;
+	               
+	    
+            }); 
+ 
+         };
+             //for property clicks
+         $scope.getpropertyData=function()
+                     {
+                            console.log("came here");
+                        $http({
+	                       method: 'GET',
+	                       url: '/getPropertyClicksData',
+	                    }).success(function(data){
+	                         
+	                         drawpropertyClicksChart(data);   
+	                         console.log("reached here back");
+	                         console.log(data);
+	                         console.log(Object.keys(data));
+	                         $scope.propertydata=data;
+	                       })
+                       } 
+         $scope.loadUserTracking=function()
+               {
+                        console.log("inside tracking");
+                        $http({
+                            method:'get',
+                            url:'/getUserTracking',                      
+                        }).success(function(data){
+                            console.log(data);
+                            console.log("checking tracking data");
+                           })
+         
+         
+               }
+         
+       });
+      google.load("visualization", "1.1", {
+        		packages : [ "bar" ]
+        	});  	  
+        	google.setOnLoadCallback(drawPageClicksChart);
+          	function drawPageClicksChart(data) {
+        		var chartData = preparePageChartData(data);	
+        		var data = new google.visualization.DataTable();
+        		data.addColumn('string', 'pagetype');
+        		data.addColumn('number', 'pageclicks');
+        		data.addRows(chartData);
+        		
+        		var options = {
+        			chart : {
+        				title : 'page type and number of clicks',
+        				subtitle : 'displaying count and clicks',
+        			},
+        			height: 500
+        		};
+
+        		var chart = new google.charts.Bar(document
+        				.getElementById('columnchart_material'));
+
+        		chart.draw(data, options);
+        	}
+
+
+        	function preparePageChartData(data) {
+        	    
+        		var chartData = [];
+        		var str=[];
+	    for(var j=0;j<Object.keys(data).length;j++)
+	     {
+	        str[j]=Object.keys(data[j])[0];
+	        console.log(str[j]);
+	      }
+        		 for(var i=0;i<Object.keys(data).length;i++)
+        	      {
+        		var temp = [
+        		               str[i],
+        		               parseInt(Object.values(data[i]))       
+        			        ];
+        			  	
+        			chartData.push(temp);
+        		}
+        	
+        		return chartData;
+        	}   
+        	
+       //for property clicks
+       //starts here
+  google.load("visualization", "1.1", {
+	packages : [ "corechart" ]
+  });
+
+
+google.setOnLoadCallback(drawpropertyClicksChart);
+function drawpropertyClicksChart(data) {
+	var chartPropertyData = prepareChartData(data);	
+	var propertyData = new google.visualization.DataTable();
+	propertyData.addColumn('string','PropertyId');
+	
+	propertyData.addColumn('number', 'propertyClicks');
+	propertyData.addRows(chartPropertyData);
+	
+	var options1 = {
+		chart : {
+			title : 'Displaying number of clicks of Property Counts'			
+		        }
+	};
+
+	var chart1 = new google.visualization.PieChart(document
+		          	.getElementById('columnchart_material1'));     
+        	chart1.draw(propertyData, options1);
+}
+   function prepareChartData(data) {
+	  var chartData = [];
+	  var str=[];
+	  for(var j=0;j<Object.keys(data).length;j++)
+	  {
+	    str[j]=Object.keys(data)[j];
+	  }
+     for(var i=0;i<Object.keys(data).length;i++)
+      {
+	var temp = [
+	                  
+	               str[i],
+		           parseInt(Object.values(data)[i])
+		        ]; 	
+		 
+		 chartData.push(temp);
+	}
+	
+	return chartData;
+}
+              
+         	
+         
+		 </script>
+		
+	</body>
+
+</html>

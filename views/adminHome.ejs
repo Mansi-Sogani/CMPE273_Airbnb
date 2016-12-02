@@ -1,0 +1,274 @@
+<html>
+
+	<head>
+		<title>Admin</title>
+		
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+			
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+			<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+			
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>				
+		
+		
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+		<link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+		<link rel="icon" sizes="192x192" href="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<script src="angularjs/admin.js"></script>
+		
+	</head>
+	
+	<body ng-app="airbnb" ng-controller="admin">
+	
+		<div style="z-index: 99; display: block;">
+		<nav class="navbar navbar-default "
+			style="background-color: transparent; background: transparent; border-color: transparent;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/home" style="border-right: 1px solid #dce0e0;"> <img src="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png" alt="some_text" style="height: 30px; font-weight: normal; font-size: inherit; background-color: transparent; color: inherit; top: -2px; font-family:"HelveticaNeue";font-size: 14px; padding: 4px 12px;"></a>
+				</div>
+				<ul class="nav navbar-nav pull-right" style="font-family: Circular,"HelveticaNeue",Helvetica; top: -2px;font-size: 14px;padding: 4px 12px;"-webkit-font-smoothing:antialiased;">
+					<li>
+						<a href="/adminHome"> <img ng-src="{{imageUrl}}" width="28" height="28" class="img-circle" style="border-color: #c4c4c4; border: 2px solid #c4c4c4;"></a>
+					</li>
+					<li>
+				</ul>
+			</div>
+		</nav>
+	</div>  
+		
+		
+		
+		<div>		
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li><a href="/getAdminDashboard">Dashboard</a></li>
+						<li><a href="#">Inbox</a></li>
+						<li><a href="/pendingRequest">Pending Requests</a></li>
+						<li><a href="/displayHostsList">Hosts</a></li>
+						<li class="active"><a href="/displayUsersList">Users</a></li>
+						<li><a href="/displayPropertiesList">Properties</a></li>
+						<li><a href="/searchBill">Bills</a></li>
+					</ul>
+
+				</div>
+			</nav>
+ 		</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="tabbable">
+				<ul class="nav nav-pills nav-stacked col-md-3">
+					<li class="active"><a href="#a" data-toggle="tab">View	Profile</a></li>
+					<li><a href="#b" data-toggle="tab">Edit Profile</a></li>
+					<li><a href="#c" data-toggle="tab">Update Photo</a></li>
+				</ul>
+				<div class="tab-content col-md-9">
+					<div class="tab-pane active" id="a">
+						<div class="panel panel-default">
+							<div class="panel-heading" align="middle" style="font-size: auto"	ng-model="product_name_model">
+								<strong><h3>Admin Profile</h3></strong>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-6 col-md-4">
+									<br><br>
+										<a> <img width="200" height="200"
+							class="img-circle"
+							ng-src="{{imageUrl}}"
+							style="border-color: #c4c4c4; border: 2px solid #c4c4c4;">
+					</a>
+									</div>
+								<div class="col-sm-6 col-md-8">
+								
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; "><br>Name</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><span>{{admin.first_name}}{{admin.last_name}}</span> </span>
+									</div>
+								</div>
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Email Address</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;">{{admin.email}}</span>
+									</div>
+								</div>
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span
+											style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Address</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;">{{admin.address}}</span>
+									</div>
+								</div>
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Phone number</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;">{{admin.phone_no}}</span>
+									</div>
+								</div>
+							</div>
+						<div class="panel-footer"></div>
+						</div>
+					</div>
+					</div></div><div class="tab-pane" id="b">
+						<div class="panel panel-default">
+							<div class="panel-heading" align="middle" style="font-size: auto"
+								ng-model="product_name_model">
+								<strong><h3>Edit Profile</h3></strong>
+							</div>
+							<div class="panel-body"
+								style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+								<div class="row" style="padding: 20px">
+									<div class="col-md-3 text-right">First Name</div>
+									<div class="col-md-9">
+										<input id="user_first_name" name="user" size="30" type="text" placeholder="{{admin.first_name}}" ng-model="fname" style="width: 100%">
+									</div>
+								</div>
+								<div class="row" style="padding: 20px">
+									<div class="col-md-3 text-right">Last Name</div>
+									<div class="col-md-9">
+										<input id="user_first_name" name="user" size="30" type="text" placeholder="{{admin.last_name}}" ng-model="lname" style="width: 100%">
+									</div>
+								</div>
+								<div class="row" style="padding: 20px">
+									<div class="col-md-3 text-right">Email</div>
+									<div class="col-md-9">
+										<input id="user_first_name" name="user" size="30" type="text" placeholder="{{admin.email}}" ng-model="email" style="width: 100%">
+									</div>
+								</div>
+								<div class="row" style="padding: 20px">
+									<div class="col-md-3 text-right">Address</div>
+									<div class="col-md-9">
+										<input id="user_first_name" name="user" size="30" type="text" placeholder="{{admin.address}}" ng-model="address" style="width: 100%">
+									</div>
+								</div>
+								<div class="row" style="padding: 20px">
+									<div class="col-md-3 text-right">Phone number</div>
+									<div class="col-md-9">
+										<input id="user_first_name" name="user" size="30" type="text" placeholder="{{admin.phone_no}}" ng-model="phone_no" style="width: 100%">
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-footer "style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+								<form>
+									<div class="row ">
+										<div class="col-md-2">
+											<button ng-click="updateAdminProfile();" class="btn icon-btn btn-block  btn-small" style="position: relative; padding-top: 10px !important; padding-bottom: 10px !important; border-color: #ff5a5f; background-color: #ff5a5f; color: #fff; padding-left: 25px !important; padding-right: 25px !important; font-weight: normal;" type="reset">
+												<span class="text-container" style=""> Save </span>
+											</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="c">
+						<div class="panel panel-default">
+							<div class="panel-heading" align="middle" style="font-size: auto" ng-model="product_name_model">
+								<strong><h3>Update Photo</h3></strong>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-3">
+										<img ng-src="{{imageUrl}}" style="border-color: #c4c4c4; border: 2px solid #c4c4c4; width: 100%">
+									</div>
+									<div class="col-md-8">
+										<div class="row">Clear frontal face photos are an
+											important way for hosts and guests to learn about each other.
+											It�s not much fun to host a landscape! Please upload a photo
+											that clearly shows your face.</div>
+										<div class="row" style="padding: 30px">
+											<input name="photo" onchange="angular.element(this).scope().uploadFile(this.files)" type="file">
+										</div>
+										<div class="row" style="padding: 30px">
+											<div class="col-md-5">
+												<button ng-click="updatePhoto();" class="btn icon-btn btn-block  btn-small" style="position: relative; padding-top: 10px !important; padding-bottom: 10px !important; border-color: #ff5a5f; background-color: #ff5a5f; color: #fff; padding-left: 25px !important; padding-right: 25px !important; font-weight: normal;" type="reset">
+													<span class="text-container" style=""> Update Photo </span>
+												</button>
+											</div>
+										</div>
+										<div class="row"  ng-hide="uploadSucess" >
+											<div class="col-md-8" >
+												<span style="color:green"> Image uploaded successfully</span>
+											</div>
+										</div>
+										<div class="row"  ng-hide="uploadFail" style="text-color:red">
+											<div class="col-md-8">
+												<span style="color:red"> Image upload failed. Try again.</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-footer"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>Airbnb</title>
+<script type="text/javascript"src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript"	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css"	href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<!-- Loading the AngularJS file from /public/angularJS folder -->
+<script src="angularjs/adminLogin.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript"	src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css"	href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<link rel="shortcut icon" sizes="76x76" type="image/x-icon"	href="https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+<link rel="icon" sizes="192x192"	href="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script	src="http://m-e-conroy.github.io/angular-dialog-service/javascripts/dialogs.min.js"	type="text/javascript"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+input[type=text]:focus {
+	outline: none;
+	box-shadow: 0px 1px 0px 0px #008489;
+}
+
+select:focus {
+	outline: none;
+	box-shadow: 0px 1px 0px 0px #008489;
+}
+
+.icon-facebook:before {
+	content: '\f16e';
+}
+
+.icon:before {
+	line-height: 1;
+}
+
+.icon:before {
+	font-family: Airglyphs, sans-serif;
+}
+
+a:focus {
+	outline: none
+}
+</style>
+</head>
+<body ng-app="airbnb" ng-controller="adminLoginController">
+
+	<div style="z-index: 99; display: block;">
+		<nav class="navbar navbar-default "
+			style="background-color: transparent; background: transparent; border-color: transparent;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"> <img src="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png"	alt="some_text"						style="height: 30px; font-weight: normal; font-size: inherit; background-color: transparent; color: inherit; top: -2px; font-family:"HelveticaNeue";font-size: 14px;    padding: 4px 12px;"></a>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div>
+			<div>
+				<div>
+					<div>
+						<div class="form-group has-feedback" style="margin-bottom: 6px;">
+							<div class="row" style="height: 30px"></div>
+							<div ng-hide="invalid_login" style="color: red;">
+						<span class="glyphicon glyphicon-exclamation-sign"></span> <strong>Username/password incorrect.</strong>
+							</div>
+							
+							<div class="row" style="height: 20px"></div>
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-sm-5" style="position: relative;">
+									<div class="right-inner-addon">
+										<input id='p_name' name='p_name' type='text'
+											class='form-control input-lg' placeholder="Email Address"
+											ng-model="email"> <span
+											class='glyphicon glyphicon-envelope form-control-feedback '
+											area-hidden='true'></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row" style="height: 10px"></div>
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-sm-5">
+									<div class="right-inner-addon">
+										<input id='p_name' name='p_name' type='text'
+											class='form-control input-lg' placeholder="Password"
+											ng-model="password"> <span
+											class='glyphicon glyphicon-lock form-control-feedback'
+											area-hidden='true'></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row" style="height: 10px"></div>
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-5">
+									<input type="checkbox" name="remember_me" id="remember_me2"
+										value="true" class="remember_me"> Remember me <a
+										href="/forgot_password" class="forgot-password pull-right"
+										data-from="email">Forgot password?</a>
+								</div>
+							</div>
+							<div class="row" style="height: 10px"></div>
+							<div class="row">
+								<div class='col-md-1'></div>
+								<div class='col-md-5'>
+									<button class="btn icon-btn btn-block  btn-large"
+										style="position: relative; padding-top: 20px !important; padding-bottom: 20px !important; border-color: #ff5a5f; background-color: #ff5a5f; color: #fff; padding-left: 27px !important; padding-right: 27px !important; font-weight: normal;"
+										name="button" type="submit" ng-click="login();">
+										<span class="text-container" style=""> Log in </span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					
+				</div>
+			</div>
+	</div>
+	</body>
+	</html>

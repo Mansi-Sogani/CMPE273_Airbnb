@@ -1,0 +1,458 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0">
+<title>Vacation Rentals</title>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<!-- Loading the AngularJS file from /public/angularJS folder -->
+<script src="angularjs/trip.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<link rel="shortcut icon" sizes="76x76" type="image/x-icon"
+	href="https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+<link rel="icon" sizes="192x192"
+	href="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="http://m-e-conroy.github.io/angular-dialog-service/javascripts/dialogs.min.js"
+	type="text/javascript"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+input[type=text]:focus {
+	outline: none;
+	box-shadow: 0px 1px 0px 0px #008489;
+}
+
+body {
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.43;
+	color: #484848;
+	background-color: #fff;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+select:focus {
+	outline: none;
+	box-shadow: 0px 1px 0px 0px #008489;
+}
+
+a:focus {
+	outline: none
+}
+
+button:focus {
+	outline: none
+}
+
+#map {
+	height: 100%;
+}
+
+.accordion-panel__content {
+	overflow: hidden;
+	padding: 5px;
+	width: 100%;
+}
+
+.accordion-panel--collapsed {
+	max-height: 0;
+	padding: 0;
+}
+
+.accordion-panel--expanded {
+	max-height: 2048px;
+	opacity: 1;
+	overflow: visible;
+	transition: opacity 0.3s, max-height 0.8s, padding 0s ease 0s;
+}
+
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+.accordion_checkout__section {
+	overflow: hidden;
+	padding: 5px;
+	width: 100%;
+}
+
+.light-gray {
+	color: #bbb;
+}
+
+.select {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-right: 2em;
+	padding-left: 10px;
+	height: 50px;
+	width: 100%;
+	transition: border-color 0.2s;
+	border: 1px solid #aaa;
+	border-radius: 2px;
+	background-color: #fff;
+	color: #484848;
+	line-height: normal;
+}
+
+.photo {
+	backface-visibility: hidden;
+	position: relative;
+	display: inline-block;
+	vertical-align: bottom;
+	overflow: hidden;
+	background-color: #bbb;
+}
+
+.panel {
+	border: 1px solid #dce0e0;
+	background-color: #fff;
+	border-radius: 0;
+}
+
+.btn {
+	display: inline-block;
+	margin-bottom: 0;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+	line-height: 1.43;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.payment-logo {
+	width: 50px;
+	height: 30px;
+	margin-right: 10px;
+	margin-top: 5px;
+	float: left;
+	text-indent: -99999px;
+	background:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA%2BgAAAAeCAYAAAC%2FgDR9AAAAC…ykPJKiI2wL%2FW5j22KwgljCA7ESrpm96oDj2wFP8BU03urrMw0%2FgAAAAASUVORK5CYII%3D)
+		no-repeat;
+}
+
+.billing_table {
+	width: 100%;
+	max-width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	display: table;
+	border-color: grey;
+}
+
+tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+
+.summary {
+	background: transparent;
+	padding: 0 0 15px;
+	font-size: 16px;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.summary .panel-body:first-child {
+	padding-top: 30px;
+	border-top: 0;
+}
+
+.total_price {
+	border: 0;
+	padding: 0;
+	width: 100%;
+	background: transparent;
+	text-align: start;
+	cursor: default;
+	pointer-events: none;
+}
+
+input[type="checkbox"] {
+	position: relative;
+	-webkit-appearance: none;
+	height: 1.25em;
+	width: 1.25em;
+	margin-bottom: -0.25em;
+	margin-right: 5px;
+	vertical-align: top;
+}
+</style>
+</head>
+<body ng-app="trip" ng-controller="trip">
+	<div style="z-index: 99; display: block;">
+		<nav class="navbar navbar-default "
+			style="background-color: transparent; background: transparent; border-color: transparent;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"
+						style="border-right: 1px solid #dce0e0;"> <img
+						src="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png"
+						alt="some_text"
+						style="height: 30px; font-weight: normal; font-size: inherit; background-color: transparent; color: inherit; top: -2px; font-family:"HelveticaNeue";font-size: 14px;    padding: 4px 12px;     ">
+					</a>
+
+				</div>
+				<ul class="nav navbar-nav pull-right" style="font-family: Circular,"HelveticaNeue",Helvetica; top: -2px;font-size: 14px;padding: 4px 12px;"-webkit-font-smoothing:antialiased;">
+					<li><a href="" ng-click="becomeHost()">Become a Host</a></li>
+
+					<li><a href="/trips">Trips</a></li>
+					<li><a href="/profile"> <img width="28" height="28"
+							class="img-circle"
+							src="https://a2.muscache.com/im/pictures/d5de2adb-a84b-4f81-814c-5f24c5701e4a.jpg?aki_policy=profile_small"
+							style="border-color: #c4c4c4; border: 2px solid #c4c4c4;">
+					</a></li>
+					<li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+	
+
+
+		<div class="container">
+			<div class="row" style="height: 30px"></div>
+
+			<div class="row">
+
+
+
+
+				<div class="col-md-7">
+					<h2 style="font-size: 32px; font-weight: normal;">Cancel
+						Reservation</h2>
+
+					<div style="margin-bottom: 48px;">
+
+						<h4
+							style="margin-bottom: 18px; font-size: 18px; font-weight: bold;">Why
+							do you need to cancel?</h4>
+						<div style="margin-bottom: 36px;">
+							<div style="margin-bottom: 6px;">
+								<div class="row" style="padding-left: 0; margin-bottom: 0px;">
+									<label class="col-sm-12" for="reason-1"> <input
+										type="radio" name="reason" id="reason-1" value="1"
+										style="float: left;"></input>
+										<div class="col-sm-11">I no longer need accommodations</div>
+									</label>
+									<div class="col-sm-11 col-sm-offset-1 row-condensed"></div>
+								</div>
+								<div class="row" style="padding-left: 0; margin-bottom: 0px;">
+									<label class="col-sm-12" for="reason-2"> <input
+										type="radio" name="reason" id="reason-2" value="2"
+										style="float: left;"></input>
+										<div class="col-sm-11">My travel dates changed</div>
+									</label>
+									<div class="col-sm-11 col-sm-offset-1 row-condensed"></div>
+								</div>
+								<div class="row" style="padding-left: 0; margin-bottom: 0px;">
+									<label class="col-sm-12" for="reason-3"> <input
+										type="radio" name="reason" id="reason-3" value="3"
+										style="float: left;"></input>
+										<div class="col-sm-11">I made the reservation by
+											accident</div>
+									</label>
+									<div class="col-sm-11 col-sm-offset-1 row-condensed"></div>
+								</div>
+								<div class="row" style="padding-left: 0; margin-bottom: 0px;">
+									<label class="col-sm-12" for="reason-4"> <input
+										type="radio" name="reason" id="reason-4" value="4"
+										style="float: left;"></input>
+										<div class="col-sm-11">I have an extenuating
+											circumstance</div>
+									</label>
+									<div class="col-sm-11 col-sm-offset-1 row-condensed"></div>
+								</div>
+								<div class="row" style="padding-left: 0; margin-bottom: 0px;">
+									<label class="col-sm-12" for="reason-5"> <input
+										type="radio" name="reason" id="reason-5" value="5"
+										style="float: left;"></input>
+										<div class="col-sm-11">My host needs to cancel</div>
+									</label>
+									<div class="col-sm-11 col-sm-offset-1 row-condensed"></div>
+								</div>
+								<div class="row" style="padding-left: 0; margin-bottom: 0px;">
+									<label class="col-sm-12" for="reason-6"> <input
+										type="radio" name="reason" id="reason-6" value="6"
+										style="float: left;"></input>
+										<div class="col-sm-11">I’m uncomfortable with the host</div>
+									</label>
+									<div class="col-sm-11 col-sm-offset-1 row-condensed"></div>
+								</div>
+								<div class="row" style="padding-left: 0; margin-bottom: 0px;">
+									<label class="col-sm-12" for="reason-7"> <input
+										type="radio" name="reason" id="reason-7" value="7"
+										style="float: left;"></input>
+										<div class="col-sm-11">Other</div>
+									</label>
+									<div class="col-sm-11 col-sm-offset-1 row-condensed"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div style="margin-bottom: 12px;">
+						<button  ng-click="cancelTrip();" class="btn btn-primary"
+							style="border-color: #ff5a5f; background-color: #ff5a5f; color: #fff;">
+							<span>Cancel My Reservation</span>
+						</button>
+					</div>
+
+				</div>
+				<div class="col-md-5" style="padding-left: 37.5px;">
+
+					<div class="summary">
+						<div class="background-cover"
+							style="height: 140px; background-image: url(https://a2.muscache.com/im/pictures/257826d6-2ec5-4721-af08-5dd074a38872.jpg?aki_policy=xx_large);"></div>
+						<div
+							style="position: relative; margin-right: 30px; margin-bottom: 0; margin-top: -25px; float: right;">
+
+							<div class="photo"
+								style="border-radius: 50%; border: 2px solid #fff;">
+								<img class="img-circle"
+									src="https://a2.muscache.com/im/pictures/d5de2adb-a84b-4f81-814c-5f24c5701e4a.jpg?aki_policy=profile_small"
+									style="height: 60px; width: 60px; vertical-align: middle; border: 0;">
+							</div>
+
+
+						</div>
+
+						<div class="panel"
+							style="border: 1px solid #dce0e0; background-color: #fff; border-radius: 0;">
+							<div class="panel-body"
+								style="padding-right: 20px; padding-bottom: 25px; padding-left: 20px; position: relative; margin: 0;">
+								<div
+									style="vertical-align: middle; margin-bottom: 12px; color: #767676;">
+									<span>Hosted by <%=trip.title%></span>
+								</div>
+								<div style="font-size: 24px; line-height: 30px;"><%=trip.desc%></div>
+								<div style="vertical-align: middle; color: #767676;">
+									<ul class="list-layout"
+										style="padding-left: 0; margin-bottom: 0; list-style: none;">
+										<li style="display: inline; font-size: 16px;"><%=trip.category%></li>
+										<li style="display: inline; font-size: 16px;"><small>*****</small></li>
+										<li class="hide-md" style="display: inline; font-size: 16px;"><span>18
+												reviews</span></li>
+									</ul>
+									<div><%=trip.street%>, <%=trip.city%>, <%=trip.state%>
+										<%=trip.zip%>, United States</div>
+								</div>
+							</div>
+
+							<div class="panel-body hide-sm"
+								style="padding-right: 20px; padding-bottom: 25px; padding-left: 20px; padding-top: 25px; border-top: 1px solid #dce0e0;">
+
+								<div class="row row-condensed">
+									<div class="col-sm-5">
+										<div style="vertical-align: middle; color: #767676;">
+
+											<span>Check-in</span>
+										</div>
+										<span><%=trip.check_in.toString().substring(0,10)%></span>
+
+									</div>
+
+									<div class="col-sm-2">
+										<i class="icon icon-chevron-right"
+											style="font-size: 1.5em; font-style: normal; font-weight: normal; line-height: 1; color: #bbb;">
+
+										</i>
+									</div>
+
+									<div class="col-sm-5">
+										<div style="vertical-align: middle; color: #767676;">
+
+											<span>Check-out</span>
+										</div>
+										<span><%=trip.check_out.toString().substring(0,10)%></span>
+
+									</div>
+
+
+								</div>
+
+							</div>
+
+
+
+
+
+
+						</div>
+
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	
+
+
+<script>
+		listing = "<%=JSON.stringify(trip)%>"
+		
+	</script>
+
+</body>
+</html>

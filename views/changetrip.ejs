@@ -1,0 +1,548 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0">
+<title>Vacation Rentals</title>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<!-- Loading the AngularJS file from /public/angularJS folder -->
+<script src="angularjs/trip.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<link rel="shortcut icon" sizes="76x76" type="image/x-icon"
+	href="https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+<link rel="icon" sizes="192x192"
+	href="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="http://m-e-conroy.github.io/angular-dialog-service/javascripts/dialogs.min.js"
+	type="text/javascript"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+body {
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.43;
+	color: #484848;
+	background-color: #fff;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.panel-trips {
+	border: 0;
+	border-radius: 1px;
+	font-size: 16px;
+	margin-top: 20px;
+}
+
+.pin {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	width: 300px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-weight: bold;
+	color: #fff;
+}
+
+.billing_table {
+	width: 100%;
+	max-width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	display: table;
+	border-color: grey;
+}
+
+tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+
+.image-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-position: 50% 50%;
+}
+
+.photo {
+	backface-visibility: hidden;
+	position: relative;
+	display: inline-block;
+	vertical-align: bottom;
+	overflow: hidden;
+	background-color: #bbb;
+}
+
+.host_name {
+	position: relative;
+	margin-top: 10px;
+	z-index: 100;
+	font-size: 18px;
+}
+
+.pin_new {
+	width: 100%;
+	height: 200px;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-weight: bold;
+	color: #fff;
+}
+
+.img-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-position: 50% 50%;
+}
+
+.img_photo {
+	backface-visibility: hidden;
+	position: relative;
+	display: inline-block;
+	vertical-align: bottom;
+	overflow: hidden;
+	background-color: #bbb;
+}
+
+.action_trips {
+	display: flex;
+	-webkit-box-pack: center;
+	justify-content: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+	padding: 0;
+}
+
+.lower_row {
+	display: flex;
+	-webkit-box-pack: center;
+	justify-content: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+	height: auto;
+}
+
+.lower_row_column {
+	display: flex;
+	-webkit-box-pack: start;
+	justify-content: flex-start;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	flex-direction: row;
+}
+
+.link_item {
+	display: flex;
+	-webkit-box-pack: center;
+	justify-content: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+	max-width: 176px;
+}
+
+.row_trip {
+	height: auto;
+	display: flex;
+	-webkit-box-pack: start;
+	justify-content: flex-start;
+	-webkit-box-pack: start;
+}
+
+.panel-header {
+	color: #484848;
+	font-size: 16px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #dce0e0;
+	background-color: #edefed;
+	position: relative;
+	margin: 0;
+	padding: 20px;
+}
+
+.panel-footer {
+	position: relative;
+	margin: 0;
+	padding: 20px;
+	border-top: 1px solid #dce0e0;
+}
+
+.change-panel {
+	border-top: none;
+	position: relative;
+	margin: 0;
+	padding: 20px;
+}
+</style>
+</head>
+<body ng-app="trip" ng-controller="trip">
+	<div style="z-index: 99; display: block;">
+		<nav class="navbar navbar-default "
+			style="background-color: transparent; background: transparent; border-color: transparent;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"
+						style="border-right: 1px solid #dce0e0;"> <img
+						src="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png"
+						alt="some_text"
+						style="height: 30px; font-weight: normal; font-size: inherit; background-color: transparent; color: inherit; top: -2px; font-family:"HelveticaNeue";font-size: 14px;    padding: 4px 12px;     ">
+					</a>
+
+				</div>
+				<ul class="nav navbar-nav pull-right" style="font-family: Circular,"HelveticaNeue",Helvetica; top: -2px;font-size: 14px;padding: 4px 12px;"-webkit-font-smoothing:antialiased;">
+					<li><a href="" ng-click="becomeHost()">Become a Host</a></li>
+
+					<li><a href="/trips">Trips</a></li>
+					<li><a href="/profile"> <img width="28" height="28"
+							class="img-circle"
+							src="https://a2.muscache.com/im/pictures/d5de2adb-a84b-4f81-814c-5f24c5701e4a.jpg?aki_policy=profile_small"
+							style="border-color: #c4c4c4; border: 2px solid #c4c4c4;">
+					</a></li>
+					<li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+	<div id="page-container"
+		style="margin-bottom: 24px; width: 1080px; padding-left: 24px; padding-right: 24px; margin-left: auto; margin-right: auto;">
+
+		<div id="your_trips">
+			<div>
+				<div class="current_trips">
+					<div class="display: block !important;">
+						<div>
+							<div style="height: 40px;"></div>
+							<div class="panel panel-trips" style="background-color: #fff;">
+								<div class="panel-body"
+									style="padding-bottom: 0; border: 1px #dce0e0 solid !important; padding: 0; width: 100%; height: auto; position: relative; margin: 0;">
+									<div style="position: relative; padding: 20px 320px 0 20px;">
+
+										<div class="check-in-out" style="padding: 20px 0 45px;">
+											<div class="schedule"
+												style="padding: 0 20px; color: #484848;">
+												<div style="margin-bottom: 18px;">
+													<div class="city" style="font-size: 36px;">San Jose</div>
+													<div>
+														<a href='#'
+															style="color: #008489; text-decoration: none; background: transparent;">
+															<span style="font-weight: normal; color: #2d2d2d;"><%=trip.desc%></span>
+														</a> <span> · </span> <span><%=trip.No_of_guests%>
+															guests</span>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+														<div class="col-sm-5"
+															style="padding-left: 0; float: left;">
+															<div class="check-in-out"
+																style="font-size: 16px; padding-bottom: 3px;">
+																<strong><%=trip.check_in.toString().substring(0,10)%></strong>
+															</div>
+
+															<div
+																style="font-size: 11px; vertical-align: middle; color: #767676;">
+																<strong>CHECK IN 5:00 PM</strong>
+															</div>
+														</div>
+
+														<div class="col-sm-5"
+															style="padding-left: 0; float: left;">
+															<div class="check-in-out"
+																style="font-size: 16px; padding-bottom: 3px;">
+																<strong><%=trip.check_out.toString().substring(0,10)%></strong>
+															</div>
+
+															<div
+																style="font-size: 11px; vertical-align: middle; color: #767676;">
+																<strong>CHECK OUT 12:00 PM (NOON)</strong>
+															</div>
+														</div>
+													</div>
+												</div>
+
+
+											</div>
+										</div>
+
+										<div
+											style="margin: 0 15px; min-height: 70px; border-top: 1px solid #bbb;">
+
+											<div class="action_trips">
+
+												<div class="row row_trip" style="margin: 0;"></div>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="pin">
+										<a href='#'
+											style="color: #008489; text-decoration: none; background: transparent;">
+											<div class="image-container"
+												style="background-image: url(https://a2.muscache.com/im/pictures/257826d6-2ec5-4721-af08-5dd074a38872.jpg?aki_policy=xx_large);"></div>
+										</a>
+										<div style="text-align: center;">
+											<a href='#' class="img-round photo"
+												style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid #fff; color: #008489; text-decoration: none; background: transparent;">
+
+												<img height="50" width="50"
+												src="https://a2.muscache.com/im/pictures/d5de2adb-a84b-4f81-814c-5f24c5701e4a.jpg?aki_policy=profile_small"
+												style="height: 60px; width: 60px; vertical-align: middle; border: 0;">
+
+											</a>
+											<div class="host_name"><%=trip.title%></div>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel"
+					style="margin-bottom: 24px; border: 1px solid #dce0e0; background-color: #fff; border-radius: 0;">
+					<div class="panel-header">Alter Reservation</div>
+					<div class="panel-body change-panel">
+						<form ng-submit="changeTrip();" method="post” name="
+							change_trip” data-toggle="validator">
+							<div class="row class="form-group"">
+								<div class="col-md-3">
+									<label for="pricing_guests"
+										style="display: block; padding-top: 9px; padding-bottom: 8px;">Guests</label>
+									<div
+										style="display: block; width: 50%; position: relative; vertical-align: bottom;">
+										<select class="form-control" id="how-many-guests"
+											placeholder="1 Guest" ng-model="no_of_guests" required>
+											<option value="1">1 Guest</option>
+											<option value="2">2 Guests</option>
+											<option value="3">3 Guests</option>
+											<option value="4">4 Guests</option>
+											<option value="5">5 Guests</option>
+											<option value="6">6 Guests</option>
+											<option value="7">7 Guests</option>
+											<option value="8">8 Guests</option>
+											<option value="9">9 Guests</option>
+											<option value="10">10 Guests</option>
+											<option value="11">11 Guests</option>
+											<option value="12">12 Guests</option>
+											<option value="13">13 Guests</option>
+											<option value="14">14 Guests</option>
+											<option value="15">15 Guests</option>
+											<option value="16">16+ Guests</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<label for="pricing_start_date"
+										style="display: block; padding-top: 9px; padding-bottom: 8px;">Check
+										in</label> <input class="form-control " type="tel" id="date1"
+										name="checkIn" ng-model="check_in" placeholder="MM/DD/YYYY"
+										required />
+									<script>
+										document.getElementById("date1").valueAsDate = new Date();
+										document.getElementById("date1").min = new Date()
+												.toISOString().substring(0, 10);
+									</script>
+									<label for="pricing_start_date"
+										style="display: block; padding-top: 9px; padding-bottom: 8px;">Check
+										out</label> <input class="form-control" type="tel" name="checkOut"
+										id="date2" ng-model="check_out" placeholder="MM/DD/YYYY"
+										required />
+									<script>
+										document.getElementById("date2").valueAsDate = new Date();
+										document.getElementById("date2").min = new Date()
+												.toISOString().substring(0, 10);
+									</script>
+								</div>
+								<div class="col-md-6">
+									<div>
+										<table class="billing_table" style="font-size: 16px;">
+											<tbody>
+												<tr class="price"></tr>
+												<tr class="price">
+													<th class="price_header"
+														style="padding-bottom: 10px; text-align: left; font-weight: bold;">
+														<span>Subtotal</span> <span>&nbsp;</span>
+													</th>
+													<td class="price_price"
+														style="text-align: right; padding-bottom: 10px;">
+														<div>
+															<span>$100</span>
+														</div>
+													</td>
+												</tr>
+												<tr class="price">
+													<th class="price_header"
+														style="padding-bottom: 10px; text-align: left; font-weight: bold;">
+														<span>Service fee</span> <span>&nbsp;</span>
+
+													</th>
+													<td class="price_price"
+														style="text-align: right; padding-bottom: 10px;">
+														<div>
+															<span>$20</span>
+														</div>
+													</td>
+												</tr>
+
+												<tr class="price">
+													<th class="price_header"
+														style="padding-bottom: 10px; text-align: left; font-weight: bold;">
+														<span>Occupancy taxes</span> <span>&nbsp;</span>
+													</th>
+													<td class="price_price"
+														style="text-align: right; padding-bottom: 10px;">
+														<div>
+															<span>$10</span>
+														</div>
+													</td>
+												</tr>
+												<tr class="price">
+													<th class="price_header"
+														style="padding-bottom: 10px; text-align: left; font-weight: bold;">
+														<span>New Total:</span> <span>&nbsp;</span>
+													</th>
+													<td class="price_price"
+														style="text-align: right; padding-bottom: 10px;">
+														<div>
+															<span>$160</span>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+						</form>
+						<div class="row" style="margin-top: 24px;">
+						
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="alert alert-danger" ng-hide="guest_error">
+									<strong>Select lesser number of guests</strong>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="alert alert-danger" ng-hide="unexpected_error">
+									<strong>Unexpected error, try again</strong>
+								</div>
+							</div>
+						</div>
+							<div class="col-md-12">
+								<p style="margin-top: 0; margin-bottom: 15px;">Alterations
+									are subject to availability and may require approval by both
+									the guest and the host. If the changes are accepted, the guest
+									will be charged or refunded the difference between the amounts
+									of the original and new reservation. Airbnb service fees will
+									update correspondingly with the change in price.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel-footer" style="text-align: right;">
+						<a href="/trips" class="btn" id="discard-alterations"
+							style="border-color: #c4c4c4; background: white; color: #484848;">
+							Discard Alteration </a> 
+							
+							<a class="btn btn-primary"
+							id="alter-submit-button" ng-click="changeTrip();" href=""
+							data-prevent-default=""
+							style="border-color: #ff5a5f; background-color: #ff5a5f; color: #fff;">
+							Submit Alteration </a>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script>
+		$(function() {
+			$("#datepicker1").datepicker();
+		});
+		$(function() {
+			$("#datepicker2").datepicker();
+		});
+	</script>
+
+</body>
+</html>

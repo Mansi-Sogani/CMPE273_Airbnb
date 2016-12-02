@@ -1,0 +1,256 @@
+<html>
+<head>
+<title>Vacation Rentals</title>
+		
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+			
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+			<link rel='stylesheet' href='/stylesheets/hr.css' />
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+			<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>	
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>			
+		
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+		<link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+		<link rel="icon" sizes="192x192" href="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+input[type=text]:focus {
+	outline: none;
+	box-shadow: 0px 1px 0px 0px #008489;
+}
+
+select:focus {
+	outline: none;
+	box-shadow: 0px 1px 0px 0px #008489;
+}
+
+.icon-facebook:before {
+	content: '\f16e';
+}
+
+.icon:before {
+	line-height: 1;
+}
+
+.icon:before {
+	font-family: Airglyphs, sans-serif;
+}
+
+a:focus {
+	outline: none
+}
+
+button:focus {
+	outline: none
+}
+
+*:focus {
+    outline: 0 !important;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus
+	{
+	color: black;
+	background-color: white;
+	font-weight: 800;
+}
+</style>
+
+</head>
+
+<body ng-app="airbnb" ng-controller="dashboardController">
+	<div style="z-index: 99; display: block;">
+		<nav class="navbar navbar-default "
+			style="background-color: transparent; background: transparent; border-color: transparent;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/home"
+						style="border-right: 1px solid #dce0e0;"> <img
+						src="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png"
+						alt="some_text"
+						style="height: 30px; font-weight: normal; font-size: inherit; background-color: transparent; color: inherit; top: -2px; font-family:"HelveticaNeue";font-size: 14px;    padding: 4px 12px;     ">
+					</a>
+
+				</div>
+				<ul class="nav navbar-nav pull-right" style="font-family: Circular,"HelveticaNeue",Helvetica; top: -2px;font-size: 14px;padding: 4px 12px;"-webkit-font-smoothing:antialiased;">
+					
+					<li><a href="/getAdminDashboard"> <img width="28" height="28" class="img-circle" ng-src="{{imageUrl}}" style="border-color: #c4c4c4; border: 2px solid #c4c4c4;">
+					</a></li>
+					<li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="tabbable">
+				<ul class="nav nav-pills nav-stacked col-md-3">
+					<li class="active"><a href="#a" data-toggle="tab">View Profile</a></li>
+					<li><a href="#c" data-toggle="tab">View Reviews</a></li>
+					<li><a href="#d" data-toggle="tab">Add Reviews</a></li>
+				</ul>
+				<div class="tab-content col-md-9">
+					<div class="tab-pane active" id="a">
+						<div class="panel panel-default">
+							<div class="panel-heading" align="middle" style="font-size: auto" ng-model="product_name_model">
+								<strong><h3>User</h3></strong>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Name</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><span><%=user[0].fname%> <%=user[0].lname%></span> </span>
+									</div>
+								</div>
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Phone
+											number</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><%=user[0].phone_no%></span>
+									</div>
+								</div>
+
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Birthday</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;"><%=user[0].birthday%></span>
+									</div>
+								</div>
+
+								<div class="row" style="height: 20px"></div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11">
+										<span style="font-size: 18px; font-weight: bold; font-family: Circular,"HelveticaNeue",Helvetica; ">Address</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-11"
+										style="font-size: 14px; font-family: Circular,"HelveticaNeue",Helvetica; ">
+										<div class="row" style="height: 10px"></div>
+										<span style="font-weight: bold;">
+											<%=user[0].street%>, <%=user[0].apartment%>, <%=user[0].city%>,
+											<%=user[0].state%>, <%=user[0].zip_code%> </span>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-footer"></div>
+						</div>
+					</div>
+					<div class="tab-pane" id="c">
+						<div class="panel panel-default">
+							<div class="panel-heading" align="middle" style="font-size: auto"ng-model="product_name_model">
+								<strong><h3>View Reviews</h3></strong>
+							</div>
+							<div class="panel-footer">
+								<% if(user.length){ 
+								    for(var i = 0; i<user.length ; i++) { %>
+							<div class="row"><br>
+							<div class="col-sm-10" >
+							<table class="table table-bordered table-striped">
+								<thead>
+									<tr class>
+									<th>Reviews</th>
+									<th width="12%">Ratings</th>	
+									</tr>
+								</thead>
+								<tbody>
+									<td><%=user[i].review%></td>
+									<td><%=user[i].rating%></td>
+									</tr>
+								</tbody>
+							</table>
+							</div>
+							</div>
+							<% }            
+										            }else{ %>
+										                 <tr>
+										                    <td colspan="3">No Reviews For this user</td>
+										                 </tr>
+										            <% } %> 								
+						</div>	
+						
+						</div>
+					</div>
+					
+					<div class="tab-pane" id="d">
+						<div class="panel panel-default">
+							<div class="panel-heading" align="middle" style="font-size: auto"ng-model="product_name_model">
+								<strong><h3>Add Reviews</h3></strong>
+							</div>
+							<div class="panel-body" >
+								<form action = '/saveUserReview/<%=user[0].user_id%>' method = 'post'>								
+								<textarea rows="4" cols="150" name="review" id="review" placeholder="Provide review on user here...."></textarea><br><br>
+								<div class="form-group">
+                        			<div class="col-sm-4">
+                    		        <select class="form-control" id="rating" name="rating">
+                            		    <option>Select Rating</option>
+						 			   	<option>Excellent</option>
+									    <option>Good</option>
+									    <option>Average</option>
+						    			<option>Bad</option>
+						    			<option>Very Bad</option>
+                           	 		</select>
+                        			</div>
+									<div class="col-sm-6" align="right">
+										<button  class="btn btn-danger" style="display: block;width:100%;font-size:auto" type="submit" ><strong>Submit Review & Rating</strong></button>
+									</div>
+								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
