@@ -1,7 +1,6 @@
+***** This was a team project, and this repository was in private mode. So I cloned the entire project and pushed as a single commit. *****
 
-
-# Airbnb_Ashna
-
+# Airbnb
 
 
 ## Usage
